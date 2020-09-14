@@ -1,0 +1,1 @@
+//https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/ resource to help find the API content
