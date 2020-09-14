@@ -14,17 +14,37 @@
 <!--def will need an input field for the user to choose a pokemon
  Centered it for now, will need to move it later
  -->
+<div class="imageDisplay">
 <section class="material text-center">
-    <form action="#" method="post">
-        <div class="field">
-            <label for="pokemonID">pokemon name or number:</label>
-            <input type="text" name="pokemonID" id="pokemonID" />
-        </div>
-        <div class="actions">
-            <button type="button" id="run">Run the script</button>
-        </div>
-    </form>
+
+        <img class="clip-svg mt-2 mb-2" src="resources/test.jpg" alt="pokedex square">
+
+
+    <template id="tpl-pokemon">
+        <li class="pokemon">
+            <h4 class="title">
+                <strong class="name"></strong>
+                <em class="id"></em>
+            </h4>
+            <p class="sprite"></p>
+            <p class="moves"></p>
+            <p class="previous Evolution"></p>
+            <p class="Evolution"></p>
+
+        </li>
+    </template>
+    <ol id="target"></ol>
 </section>
+</div>
+<form action="#" method="post">
+    <div class="field text-center">
+        <label for="pokemonID"></label>
+        <input type="text" name="pokemonID" id="pokemonID" />
+    </div>
+    <div class="actions text-center">
+        <button type="button" id="run">search</button>
+    </div>
+</form>
 
 <script src="script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
