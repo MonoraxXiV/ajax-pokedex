@@ -12,39 +12,22 @@ var searchButton = document.getElementById("run").addEventListener("click", func
             .then((response) => {
                 return response.json()
             })
-            .then(data => {
-                console.log(data);
-                pokemon = data;
-            })
+            .then(data=> displayPokemon(data))
             .catch((err) => {
-                console.error("Pokemon not found");
+                console.error("unable to fetch");
             })
     }
-
     fetchPokemon()
-    let templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
-    templateNode.querySelector(".name").innerHTML = pokemon.name;
-    templateNode.querySelector(".id").innerHTML = pokemon.id;
-    templateNode.querySelector(".evolution").innerHTML = "evolves to: " + pokemon.evolves_to;
-    document.getElementById("target").appendChild(templateNode);
-    /*
-    //basically we want to put the data in this template that we made
-    function displayPokemon(pokemon) {
-        //gets the data of the pokemon that was input
-        pokemon.forEach(poke=> {
-            fetchPokemon();
-            let templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
-            templateNode.querySelector('.name').innerText =poke.name;
-            templateNode.querySelector(".sprite").innerHTML=poke.sprites;
-            //templateNode.querySelector('.moves').innerText=poke.moves;
-            // I think moves won't work like this
-            //templateNode.querySelector(".previousEvo")
-            templateNode.querySelector(".Evolution").innerHTML=poke.evolves_to;
+    function displayPokemon(data) {
 
-        })
-
-
+        let templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
+        templateNode.querySelector(".name").innerHTML = data.name;
+        console.log(data.name);
+        templateNode.querySelector(".id").innerHTML = data.id;
+        templateNode.querySelector(".evolution").innerHTML = "evolves to: ";
+        //still need to limit moves to 4 random ones.
+        //separate API call for evolutions.
+        document.getElementById("target").appendChild(templateNode);
     }
-    */
-
+displayPokemon()
 })
