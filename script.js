@@ -12,7 +12,9 @@ var searchButton= document.getElementById("run").addEventListener("click",functi
             .then((response) => {
                 return response.json()
             })
-            .then(data=> displayPokemon(data))
+            .then(data=> {
+                console.log(data);
+            })
             .catch((err) => {
                 console.error("Pokemon not found");
             })
