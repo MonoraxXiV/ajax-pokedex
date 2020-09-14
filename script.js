@@ -12,17 +12,31 @@ var searchButton= document.getElementById("run").addEventListener("click",functi
             .then((response) => {
                 return response.json()
             })
-            .then((data) => {
-                // Work with JSON data here
-                console.log(data)
-            })
+            .then(data=> displayPokemon(data))
             .catch((err) => {
                 console.error("Pokemon not found");
             })
     }
 
-    function displayPokemon() {
-        fetchPokemon()
+    /*
+    //basically we want to put the data in this template that we made
+    function displayPokemon(pokemon) {
+        //gets the data of the pokemon that was input
+        pokemon.forEach(poke=> {
+            fetchPokemon();
+            let templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
+            templateNode.querySelector('.name').innerText =poke.name;
+            templateNode.querySelector(".sprite").innerHTML=poke.sprites;
+            //templateNode.querySelector('.moves').innerText=poke.moves;
+            // I think moves won't work like this
+            //templateNode.querySelector(".previousEvo")
+            templateNode.querySelector(".Evolution").innerHTML=poke.evolves_to;
+
+        })
+
+
     }
-        displayPokemon()
+    */
+     fetchPokemon()
+
 })
