@@ -1,16 +1,16 @@
-body{
+body {
     background-color: #D30A3E;
 
 }
 
-.imageDisplay{
+.imageDisplay {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 34% 100%, 0% 80%);
     background-color: rgba(155, 155, 155, 1);
-    width:75%;
-    margin:auto;
+    width: 75%;
+    margin: auto;
 
 }
 
-h1{
-    color:white;
+h1 {
+    color: white;
 }
