@@ -26,13 +26,17 @@ var searchButton = document.getElementById("run").addEventListener("click", func
 
         let templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
         templateNode.querySelector(".name").innerHTML = data.name;
-        console.log(data.name);
+        console.log(data);
         templateNode.querySelector(".id").innerHTML = data.id;
         templateNode.querySelector(".evolution").innerHTML = "evolves to: ";
         //save as an array. display four elements(move.name)!!watch out for ditto and smeargle.
-
-       moves=data.moves[1].move.name;
-        templateNode.querySelector(".moves").innerHTML=""+moves;
+            var i=0;
+            moves = data.moves[0].move.name;
+            for (i; i<moves.length; i++) {
+                templateNode.querySelector(".moves").innerHTML = "" + moves;
+            }
+           let sprites= data.sprites.front_default;
+       document.getElementById("placeholder").src=sprites;
         //still need to limit moves to 4 random ones.
         //separate API call for evolutions.
         document.getElementById("target").appendChild(templateNode);
