@@ -7,6 +7,7 @@ var searchButton = document.getElementById("run").addEventListener("click", func
 
 
     function fetchPokemon() {
+
         var input = document.getElementById("pokemonID").value;
         console.log(input); //already getting data based on number and ID, now to show the needed data.
         fetch('https://pokeapi.co/api/v2/pokemon/' + input)
@@ -14,13 +15,21 @@ var searchButton = document.getElementById("run").addEventListener("click", func
                 return response.json()
             })
             .then(data=> displayPokemon(data))
-            .catch((err) => {
-                alert("unable to fetch, please use a name or id");
+            .then(data=> {
+                return fetch('https://pokeapi.co/api/v2/pokemon-species/'+data.id)
             })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                // do stuff with `data`
+            })
+            .catch(function(error) {
+                console.log('Requestfailed', error)
+            });
+
     }
     fetchPokemon()
-
-
 
    function displayPokemon(data) {
 
@@ -31,8 +40,10 @@ var searchButton = document.getElementById("run").addEventListener("click", func
         templateNode.querySelector(".evolution").innerHTML = "evolves to: ";
         //save as an array. display four elements(move.name)!!watch out for ditto and smeargle.
             var i=0;
-            moves = data.moves[0].move.name;
-            for (i; i<moves.length; i++) {
+
+            for (i; i<4; i++) {
+
+                moves = data.moves[i].move.name;
                 templateNode.querySelector(".moves").innerHTML = "" + moves;
             }
            let sprites= data.sprites.front_default;
@@ -40,6 +51,11 @@ var searchButton = document.getElementById("run").addEventListener("click", func
         //still need to limit moves to 4 random ones.
         //separate API call for evolutions.
         document.getElementById("target").appendChild(templateNode);
+
+
+
+
+
     }
 
 displayPokemon()
