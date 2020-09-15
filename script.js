@@ -2,6 +2,7 @@
 //https://pokeapi.co/docs/v2#pokemon
 
 let pokemon = [];
+
 document.getElementById("run").addEventListener("click", function () {
 
 
@@ -17,8 +18,8 @@ document.getElementById("run").addEventListener("click", function () {
 
 
     }
-
     fetchPokemon()
+
 
     function displayPokemon(data) {
 
@@ -46,38 +47,39 @@ document.getElementById("run").addEventListener("click", function () {
         document.getElementById("placeholder").src = sprites;
         //still need to limit moves to 4 random ones.
         //separate API call for evolutions.
+        //find a way to fetch the species
+        var speciesUrl=data.species.url;
+        console.log(speciesUrl)
+        fetch (speciesUrl)
+            .then((response) => {
+                return response.json()
+            })
+            .then(data => {
+            var babyCheck =data.is_baby;
+            console.log(babyCheck); //returned true for magby
+            var previousForm= data.evolves_from_species;
+            console.log(previousForm.name) //shows bulbasaur for ivysaur.
+
+
+            if (previousForm===null){
+                templateNode.querySelector(".previousEvo").innerHTML = "";
+            }else{
+                templateNode.querySelector(".previousEvo").innerHTML = "Previous evolution: "+previousForm.name;
+            }
+
+            })
 
         document.getElementById("target").appendChild(templateNode);
         for (i; i< templateNode.childNodes.length; i++){
 
             templateNode.innerHTML = '';
-        }
 
+        }
+        return displayPokemon()
 
 
     }
 
 
-        fetch('https://pokeapi.co/api/v2/pokemon-species/' + input)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                return fetch(data.evolution_chain)
-            })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data.evolution);
-            })
-            .catch(function (error) {
-                console.log('Requestfailed', error)
-            });
-
-
-
-
-    displayPokemon()
 
 })
