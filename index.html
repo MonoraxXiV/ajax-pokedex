@@ -11,36 +11,36 @@
     <title>Pokédex</title>
 </head>
 <body>
-<h1 class=" text-center"> Pokedex</h1>
+
+<div>
+    <h1 class=" text-center"> Pokédex</h1>
+
+</div>
 <!--def will need an input field for the user to choose a pokemon
  Centered it for now, will need to move it later
  -->
+
 <div class="imageDisplay">
     <section class="material text-center">
         <div>
             <div class="imageAndSprite">
-           <img   class=" square clip-svg mt-2 mb-2" src="resources/test.jpg" alt="pokedex square">
-                    <img  id="placeholder" class=" sprite clip-svg " src="" alt="">
+                <img class=" square clip-svg mt-2 mb-2" src="resources/test.jpg" alt="pokedex square">
+                <img id="placeholder" class=" sprite clip-svg " src="" alt="">
 
             </div>
 
 
+            <h4 class="title">
+                <em class="id" id="id"></em>
+                <strong class="name" id="name"></strong>
+            </h4>
+            <p class="moves" id="moves"></p>
+            <p class="previousEvo" id="here"></p>
+            <p class="evolution" id="evolution"></p>
 
-            <template id="tpl-pokemon">
-                <li class="pokemon">
-                    <h4 class="title">
-                        <em class="id"></em>
-                        <strong class="name"></strong>
-                    </h4>
-                    <p class="sprite"></p>
-                    <p class="moves"></p>
-                    <p class="previousEvo"></p>
-                    <p class="evolution"></p>
 
-                </li>
-            </template>
         </div>
-        <ol id="target"></ol>
+        <p id="target"></p>
     </section>
 </div>
 <form action="#" method="post">
@@ -52,6 +52,9 @@
         <button type="button" id="run">search</button>
     </div>
 </form>
+<div>
+
+</div>
 
 <script src="script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
