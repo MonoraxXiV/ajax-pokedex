@@ -2,9 +2,9 @@
 //https://pokeapi.co/docs/v2#pokemon
 
 
-
 document.getElementById("run").addEventListener("click", function () {
 
+    document.getElementById("here").innerHTML = "";
 
     async function fetchPokemon() {
 
@@ -18,6 +18,7 @@ document.getElementById("run").addEventListener("click", function () {
 
 
     }
+
     fetchPokemon()
 
 
@@ -33,7 +34,7 @@ document.getElementById("run").addEventListener("click", function () {
         document.getElementById("evolution").innerHTML = "";
         //save as an array. display four elements(move.name)!!watch out for ditto and smeargle.
         var i = 0;
-        document.getElementById("moves").innerHTML ="";
+        document.getElementById("moves").innerHTML = "";
         if (data.moves.length === 1) {
 
             document.getElementById("moves").innerHTML = " " + data.moves[0].move.name;
@@ -41,7 +42,7 @@ document.getElementById("run").addEventListener("click", function () {
             for (i; i < 4; i++) {
 
                 let movePokemon = data.moves[i];
-                document.getElementById("moves").innerHTML +=" "+movePokemon.move.name+",";
+                document.getElementById("moves").innerHTML += " " + movePokemon.move.name + ",";
             }
         }
         let sprites = data.sprites.front_default;
@@ -49,33 +50,28 @@ document.getElementById("run").addEventListener("click", function () {
         //still need to limit moves to 4 random ones.
         //separate API call for evolutions.
         //find a way to fetch the species
-        var speciesUrl=data.species.url;
+        var speciesUrl = data.species.url;
         console.log(speciesUrl)
-        fetch (speciesUrl)
-            .then(response=>  response.json())
+        fetch(speciesUrl)
+            .then(response => response.json())
             .then(data => {
-            var babyCheck =data.is_baby;
-            console.log(babyCheck); //returned true for magby
-            var previousForm= data.evolves_from_species;
-            console.log(previousForm.name) //shows bulbasaur for ivysaur.
+                var babyCheck = data.is_baby;
+                console.log(babyCheck); //returned true for magby
+                var previousForm = data.evolves_from_species;
+                console.log(previousForm.name) //shows bulbasaur for ivysaur.
 
 
-            if (previousForm===null){
-                document.getElementById("here").innerHTML = "";
-            }else{
-                document.getElementById("here").innerHTML = "Previous evolution: "+previousForm.name;
+                if (previousForm === null) {
+                    document.getElementById("here").innerHTML = "";
+                } else {
+                    document.getElementById("here").innerHTML = "Previous evolution: " + previousForm.name;
 
-            }
+                }
 
             })
 
 
-
-
-
-
     }
-
 
 
 })
