@@ -2,7 +2,7 @@
 //https://pokeapi.co/docs/v2#pokemon
 
 let pokemon = [];
-
+var templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
 document.getElementById("run").addEventListener("click", function () {
 
 
@@ -23,14 +23,14 @@ document.getElementById("run").addEventListener("click", function () {
 
     function displayPokemon(data) {
 
-        let templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
+
         //loop over template node and empty innerhtml
         // for every child in template node ="";
 
         templateNode.querySelector(".name").innerHTML = data.name;
         console.log(data);
         templateNode.querySelector(".id").innerHTML = data.id;
-        templateNode.querySelector(".evolution").innerHTML = "evolves to: ";
+        templateNode.querySelector(".evolution").innerHTML = "";
         //save as an array. display four elements(move.name)!!watch out for ditto and smeargle.
         var i = 0;
         if (data.moves.length === 1) {
@@ -51,9 +51,7 @@ document.getElementById("run").addEventListener("click", function () {
         var speciesUrl=data.species.url;
         console.log(speciesUrl)
         fetch (speciesUrl)
-            .then((response) => {
-                return response.json()
-            })
+            .then(response=>  response.json())
             .then(data => {
             var babyCheck =data.is_baby;
             console.log(babyCheck); //returned true for magby
@@ -64,18 +62,20 @@ document.getElementById("run").addEventListener("click", function () {
             if (previousForm===null){
                 templateNode.querySelector(".previousEvo").innerHTML = "";
             }else{
-                templateNode.querySelector(".previousEvo").innerHTML = "Previous evolution: "+previousForm.name;
+                document.getElementById("here").innerHTML = "Previous evolution: "+previousForm.name;
+
             }
 
             })
 
         document.getElementById("target").appendChild(templateNode);
-        for (i; i< templateNode.childNodes.length; i++){
 
-            templateNode.innerHTML = '';
+        for (i=0; i< templateNode.childNodes.length; i++){
+
+            templateNode.childNodes[i].innerHTML = '';
 
         }
-        return displayPokemon()
+
 
 
     }
