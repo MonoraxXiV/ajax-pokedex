@@ -1,8 +1,8 @@
 //https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/ resource to help find the API content
 //https://pokeapi.co/docs/v2#pokemon
 
-let pokemon = [];
-var templateNode = document.getElementById('tpl-pokemon').content.cloneNode(true);
+
+
 document.getElementById("run").addEventListener("click", function () {
 
 
@@ -27,20 +27,21 @@ document.getElementById("run").addEventListener("click", function () {
         //loop over template node and empty innerhtml
         // for every child in template node ="";
 
-        templateNode.querySelector(".name").innerHTML = data.name;
+        document.getElementById("name").innerHTML = data.name;
         console.log(data);
-        templateNode.querySelector(".id").innerHTML = data.id;
-        templateNode.querySelector(".evolution").innerHTML = "";
+        document.getElementById("id").innerHTML = data.id;
+        document.getElementById("evolution").innerHTML = "";
         //save as an array. display four elements(move.name)!!watch out for ditto and smeargle.
         var i = 0;
+        document.getElementById("moves").innerHTML ="";
         if (data.moves.length === 1) {
 
-            templateNode.querySelector(".moves").innerHTML = " " + data.moves[0].move.name;
+            document.getElementById("moves").innerHTML = " " + data.moves[0].move.name;
         } else {
             for (i; i < 4; i++) {
 
                 let movePokemon = data.moves[i];
-                templateNode.querySelector(".moves").innerHTML +=" "+movePokemon.move.name+",";
+                document.getElementById("moves").innerHTML +=" "+movePokemon.move.name+",";
             }
         }
         let sprites = data.sprites.front_default;
@@ -60,7 +61,7 @@ document.getElementById("run").addEventListener("click", function () {
 
 
             if (previousForm===null){
-                templateNode.querySelector(".previousEvo").innerHTML = "";
+                document.getElementById("here").innerHTML = "";
             }else{
                 document.getElementById("here").innerHTML = "Previous evolution: "+previousForm.name;
 
@@ -68,13 +69,8 @@ document.getElementById("run").addEventListener("click", function () {
 
             })
 
-        document.getElementById("target").appendChild(templateNode);
 
-        for (i=0; i< templateNode.childNodes.length; i++){
 
-            templateNode.childNodes[i].innerHTML = '';
-
-        }
 
 
 
