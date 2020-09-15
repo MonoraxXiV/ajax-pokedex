@@ -65,7 +65,16 @@ document.getElementById("run").addEventListener("click", function () {
                     document.getElementById("here").innerHTML = "";
                 } else {
                     document.getElementById("here").innerHTML = "Previous evolution: " + previousForm.name;
+                    fetch('https://pokeapi.co/api/v2/pokemon/' +previousForm.name )
+                        .then((response) => {
+                            return response.json()
+                        })
+                        .then(data => {
+                            let spritePrevious = data.sprites.front_default;
+                            console.log(spritePrevious);
+                            document.getElementById("previousEvoImage").src = spritePrevious;
 
+                        })
                 }
 
             })
