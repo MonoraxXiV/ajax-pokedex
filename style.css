@@ -10,6 +10,26 @@ body {
     margin: auto;
 
 }
+.imageAndSprite{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.square{
+    position: relative;
+    top: 0;
+    left: 0;
+    width:25%;
+    height:25%;
+
+
+}
+
+.sprite{
+    position: absolute;
+    top:100px;
+    left:525px;
+}
 
 h1 {
     color: white;
