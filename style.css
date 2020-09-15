@@ -3,34 +3,42 @@ body {
 
 }
 
+
 .imageDisplay {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 34% 100%, 0% 80%);
     background-color: rgba(155, 155, 155, 1);
     width: 75%;
     margin: auto;
 
+
 }
-.imageAndSprite{
+
+.imageAndSprite {
     position: relative;
     top: 0;
     left: 0;
 }
-.square{
+
+.square {
     position: relative;
     top: 0;
     left: 0;
-    width:25%;
-    height:25%;
+    width: 25%;
+    height: 25%;
 
 
 }
 
-.sprite{
+.sprite {
     position: absolute;
-    top:100px;
-    left:525px;
+    top: 100px;
+    left: 525px;
+
 }
 
 h1 {
     color: white;
+
 }
+
+
