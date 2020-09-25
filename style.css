@@ -41,4 +41,21 @@ h1 {
 
 }
 
+@media screen and (max-width: 992px) {
+    .sprite{
+        top:20%;
+        left:40%;
+    }
+}
 
+
+@media screen and (max-width: 600px) {
+    .sprite{
+        top:20%;
+        left:40%;
+        height:75%;
+
+
+    }
+
+}
