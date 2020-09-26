@@ -5,10 +5,11 @@
 document.getElementById("run").addEventListener("click", function () {
 
     document.getElementById("here").innerHTML = "";
+    document.getElementById("previousEvoImage").src = "";
 
     async function fetchPokemon() {
 
-        var input = document.getElementById("pokemonID").value;
+        var input = document.getElementById("pokemonID").value.toLowerCase();
         console.log(input); //already getting data based on number and ID, now to show the needed data.
         fetch('https://pokeapi.co/api/v2/pokemon/' + input)
             .then((response) => {
